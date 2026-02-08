@@ -204,12 +204,13 @@ The following screenshots document the captured traffic:
 - Packet 99: [FIN, ACK]: Additional FIN packet (possible retransmission or acknowledgment)
 - Packet 100: [ACK]: Application acknowledges and completes the four-way TCP handshake termination
 
-![Screenshot 5 - SQL Queries Captured](db_login.png)
-*Caption: Unencrypted SQL queries visible in packet capture*
+
+
 **Unencrypted Communication**
 All MySQL traffic is transmitted in plaintext, as evidenced by the readable protocol information. The packet capture clearly shows:
 - Database authentication details (username: root, database: userdb). However, it does seem like for every authentication attempt, the password is hashed with a salt.
-
+![Screenshot 5 - SQL Queries Captured](db_login.png)
+*Caption: Unencrypted SQL queries visible in packet capture*
 
 
 This capture demonstrates the critical vulnerability: anyone with network access can intercept and read all database communications, including queries, responses, and authentication attempts.
@@ -234,6 +235,7 @@ FLAG{n3tw0rk_tr4ff1c_1s_n0t_s3cur3}
 #### Password Handling Observation
 
 While examining the captured packets, it was observed that database authentication passwords appear to be hashed with salting. Each new connection to the database shows a different password value, indicating the use of MySQL's `mysql_native_password`. This can also be confirmed from the docker compose logs
+![mysql_native_password_module](mysql_password_hash_log.png)
 
 However, this does not protect the actual data being transmitted after authentication.
 
@@ -246,16 +248,8 @@ However, this does not protect the actual data being transmitted after authentic
 **Severity**: Critical
 
 **Description**: All communication between the web application and MySQL database occurs over an unencrypted connection. This is explicitly confirmed in the Docker logs:
+![SSL Warning](ssl_warning.png)
 
-```
-WARNING: SSL/TLS is DISABLED - All traffic is UNENCRYPTED!
-```
-
-**Evidence from Docker Logs**:
-```
-2026-02-08T19:10:43.030751Z 0 [Warning] [MY-011068] [Server] The syntax '--ssl=off' is deprecated and will be removed in a future release.
-2026-02-08T19:10:46.753027Z 0 [Warning] [MY-011302] [Server] Plugin mysqlx reported: 'Failed at SSL configuration: "SSL context is not usable without certificate and private key"'
-```
 
 **Impact**:
 - SQL queries are visible in plaintext
@@ -269,11 +263,8 @@ WARNING: SSL/TLS is DISABLED - All traffic is UNENCRYPTED!
 **Severity**: Medium
 
 **Description**: The MySQL server is configured to use the deprecated `mysql_native_password` authentication plugin:
+![mysql_native_password_module](mysql_password_hash_log.png)
 
-```
-2026-02-08T19:10:43.030796Z 0 [Warning] [MY-010918] [Server] 'default_authentication_plugin' is deprecated and will be removed in a future release. Please use authentication_policy instead.
-2026-02-08T19:10:44.105688Z 6 [Warning] [MY-013360] [Server] Plugin mysql_native_password reported: ''mysql_native_password' is deprecated and will be removed in a future release. Please use caching_sha2_password instead'
-```
 
 **Impact**:
 - Using outdated authentication mechanisms
@@ -307,7 +298,6 @@ An attacker with access to the Docker bridge network (or any network path betwee
 
 ## Recommendations
 
-### Immediate Actions
 
 1. **Enable SSL/TLS for MySQL Connections**
    - Generate SSL certificates for MySQL server
@@ -316,30 +306,21 @@ An attacker with access to the Docker bridge network (or any network path betwee
 
 2. **Update Authentication Plugin**
    - Migrate from `mysql_native_password` to `caching_sha2_password`
-   - Update application database drivers if necessary
 
 3. **Network Segmentation**
    - Implement network policies to restrict database access
    - Use Docker network isolation features
-   - Consider using separate networks for different service tiers
 
-### Long-term Security Improvements
-
-1. **Implement End-to-End Encryption**
+4. **Implement End-to-End Encryption**
    - Encrypt sensitive data at the application layer
    - Use encryption at rest for database storage
 
-2. **Network Monitoring and Intrusion Detection**
+5. **Network Monitoring and Intrusion Detection**
    - Deploy network monitoring tools
    - Set up alerts for unusual database traffic patterns
    - Implement intrusion detection systems (IDS)
 
-3. **Regular Security Audits**
-   - Perform periodic penetration testing
-   - Conduct code reviews focusing on security
-   - Keep all dependencies and systems updated
-
-4. **Principle of Least Privilege**
+6. **Principle of Least Privilege**
    - Limit database user permissions
    - Use separate credentials for different application components
    - Implement role-based access control
@@ -350,12 +331,10 @@ This MITM attack successfully demonstrated that the application transmits sensit
 
 - Data breaches
 - Unauthorized access to sensitive information
-- Compliance violations (GDPR, HIPAA, PCI-DSS, etc.)
-- Reputational damage
+
 
 The captured flag `FLAG{n3tw0rk_tr4ff1c_1s_n0t_s3cur3}` serves as proof of concept that network traffic can be intercepted and read by anyone with access to the network path between the application and database.
 
-**Immediate remediation is required** to protect user data and application secrets by implementing SSL/TLS encryption for all database connections.
 
 ## Resources
 
