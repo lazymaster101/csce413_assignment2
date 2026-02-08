@@ -248,6 +248,7 @@ However, this does not protect the actual data being transmitted after authentic
 **Severity**: Critical
 
 **Description**: All communication between the web application and MySQL database occurs over an unencrypted connection. This is explicitly confirmed in the Docker logs:
+
 ![SSL Warning](ssl_warning.png)
 
 
