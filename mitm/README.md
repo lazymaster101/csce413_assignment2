@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document details the Man-in-the-Middle (MITM) attack performed on the web application running on IP address `172.20.0.10` to capture and analyze unencrypted network traffic between the application and the MySQL database running on IP address `172.20.0.11`. The attack successfully revealed sensitive data transmitted in plaintext over the network.
+This document details the Man-in-the-Middle (MITM) attack performed on the web application running on IP address `172.20.0.10:5000` to capture and analyze unencrypted network traffic between the application and the MySQL database running on IP address `172.20.0.11:3306`. The attack successfully revealed sensitive data transmitted in plaintext over the network.
 
 ## Setup and Environment
 
@@ -10,13 +10,82 @@ This document details the Man-in-the-Middle (MITM) attack performed on the web a
 - **Target**: Web application with MySQL database backend
 - **Database**: MySQL 8.0.45
 - **Port**: 3306 (MySQL default)
-- **Network**: Docker bridge network
+- **Sniffing Network**: Docker bridge network
 
 ### Prerequisites
 - Docker and Docker Compose
 - Wireshark
 - Ubuntu VM
 - Network packet capture tools (tcpdump/Wireshark)
+
+## Ubuntu VM Initial Setup
+
+### System Updates and Basic Tools
+
+```bash
+# Update package lists
+sudo apt update
+
+# Install Linux headers (required for various kernel modules)
+sudo apt install linux-headers-$(uname -r)
+
+# Install tcpdump for packet capture
+sudo apt install tcpdump
+
+# Install git for version control
+sudo apt install git
+```
+
+### Docker Installation (Using Docker's APT Repository)
+
+```bash
+# Add Docker's official GPG key:
+sudo apt-get update
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+
+# Install Docker packages
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# Verify Docker installation
+sudo docker run hello-world
+```
+
+### Wireshark Installation
+
+```bash
+# Install Wireshark
+sudo apt install wireshark
+
+# Add current user to wireshark group to capture packets without sudo
+sudo usermod -aG wireshark $USER
+
+# Reboot or log out and log back in for group changes to take effect
+
+# To run wireshark
+sudo wireshark
+```
+
+### VS Code Installation
+
+```bash
+# Download VS Code .deb package (replace with current version)
+https://go.microsoft.com/fwlink/?LinkID=760868
+
+# Install VS Code
+
+sudo dpkg -i <file>.deb
+sudo apt-get install -f # Install dependencies
+```
 
 ## Steps Performed
 
@@ -25,7 +94,8 @@ This document details the Man-in-the-Middle (MITM) attack performed on the web a
 First, the Docker containers were started using Docker Compose:
 
 ```bash
-docker compose up --build
+sudo docker compose up --build
+sudo docker compose up -d
 ```
 
 This command builds and launches both the web application and database containers on a shared Docker bridge network.
@@ -46,7 +116,7 @@ sudo tcpdump -i br-<network_id> -A -s 0 'port 3306'
 
 ### 3. Solution: Ubuntu VM Setup
 
-Following a suggestion to run the containers inside Ubuntu, the following steps were taken:
+Following a suggestion from Ali to run the containers inside Ubuntu, the following steps were taken:
 
 1. Installed Ubuntu VM on Windows host machine
 2. Installed Docker on the Ubuntu VM
@@ -99,16 +169,57 @@ WHERE id = 1
 
 The following screenshots document the captured traffic:
 
-![Screenshot 1 - Wireshark Interface](screenshot1.png)
-*Caption: Wireshark showing the Docker bridge interface*
+![Screenshot 1 - Wireshark Interface](wireshark_interface.png)
+*Caption: Wireshark showing the Docker bridge interface br-1ef94bb99245*
 
-![Screenshot 2 - SQL Queries Captured](screenshot2.png)
+
+
+
+## Wireshark Packet Capture Analysis
+
+![Screenshot 2 - SQL Queries Captured](view_users_packets.png)
 *Caption: Unencrypted SQL queries visible in packet capture*
 
-![Screenshot 3 - Database Responses](screenshot3.png)
-*Caption: Database responses containing sensitive data*
+### Key Observations:
 
-![Screenshot 4 - Secrets Endpoint](screenshot4.png)
+**TCP Connection Establishment (Packets 83-85)**
+- Three-way handshake between application and database
+- Packet 83: [SYN] - Connection initiation from 172.20.0.10 to 172.20.0.11:3306
+- Packet 84: [SYN, ACK] - Database acknowledges connection request
+- Packet 85: [ACK] - Application confirms connection established
+
+**MySQL Protocol Traffic (Packets 86-96)**
+- Packet 86: MySQL Server Greeting (protocol version 10, MySQL 8.0.45)
+- Packet 88: MySQL Login Request (user=root, db=userdb)
+- Packet 90: MySQL Response OK - Authentication successful
+- Packets 91-97: Series of MySQL Request Query and Response OK packets
+![Screenshot 3 - Standard SQL Queries](regular_queries_1.png)
+*Caption: *
+![Screenshot 4 - SQL Queries Captured](regular_queries_2.png)
+*Caption: *
+
+**Packets 97-100: TCP Connection Termination**
+- Packet 97: Request QUIT: The website sends a disconnection request to the database.
+- Packet 98: [FIN, ACK]: Database initiates connection closure after receiving QUIT command
+- Packet 99: [FIN, ACK]: Additional FIN packet (possible retransmission or acknowledgment)
+- Packet 100: [ACK]: Application acknowledges and completes the four-way TCP handshake termination
+
+![Screenshot 5 - SQL Queries Captured](db_login.png)
+*Caption: Unencrypted SQL queries visible in packet capture*
+**Unencrypted Communication**
+All MySQL traffic is transmitted in plaintext, as evidenced by the readable protocol information. The packet capture clearly shows:
+- Database authentication details (username: root, database: userdb). However, it does seem like for every authentication attempt, the password is hashed with a salt.
+
+
+
+This capture demonstrates the critical vulnerability: anyone with network access can intercept and read all database communications, including queries, responses, and authentication attempts.
+
+**Flag Retrieval**
+
+![Screenshot 4 - Secrets Endpoint](secret_query.png)
+*Caption: Traffic from /api/secrets endpoint*
+
+![Screenshot 4 - Secrets Endpoint](flag.png)
 *Caption: Traffic from /api/secrets endpoint*
 
 ### Sensitive Data Discovered
@@ -122,7 +233,7 @@ FLAG{n3tw0rk_tr4ff1c_1s_n0t_s3cur3}
 
 #### Password Handling Observation
 
-While examining the captured packets, it was observed that database authentication passwords appear to be hashed with salting. Each new connection to the database shows a different password value, indicating the use of a challenge-response authentication mechanism (likely MySQL's `mysql_native_password` or `caching_sha2_password` plugin).
+While examining the captured packets, it was observed that database authentication passwords appear to be hashed with salting. Each new connection to the database shows a different password value, indicating the use of MySQL's `mysql_native_password`. This can also be confirmed from the docker compose logs
 
 However, this does not protect the actual data being transmitted after authentication.
 
@@ -246,18 +357,14 @@ The captured flag `FLAG{n3tw0rk_tr4ff1c_1s_n0t_s3cur3}` serves as proof of conce
 
 **Immediate remediation is required** to protect user data and application secrets by implementing SSL/TLS encryption for all database connections.
 
+## Resources
+
+- [Docker Documentation - Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
+
 ## Artifacts
 
 All packet captures and screenshots are stored in this directory:
 
 - `capture.pcap` - Full packet capture file
-- `screenshot1.png` - Wireshark interface showing bridge network
-- `screenshot2.png` - Captured SQL queries
-- `screenshot3.png` - Database responses with sensitive data
-- `screenshot4.png` - Traffic from /api/secrets endpoint
 
 ---
-
-**Document Version**: 1.0  
-**Date**: February 8, 2026  
-**Attack Performed By**: Security Assessment Team
