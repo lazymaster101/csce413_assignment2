@@ -3,14 +3,45 @@
 set -euo pipefail
 
 TARGET_IP=${1:-172.20.0.40}
-SEQUENCE=${2:-"1234,5678,9012,5676"}
+SEQUENCE=${2:-"1234,5678,9012"}
 PROTECTED_PORT=${3:-2222}
 
+echo "Attempting correct knock sequence: $SEQUENCE"
 echo "[1/3] Attempting protected port before knocking"
 nc -z -v -w 10 "$TARGET_IP" "$PROTECTED_PORT" || true
 
 echo "[2/3] Sending knock sequence: $SEQUENCE"
 python3 knock_client.py --target "$TARGET_IP" --sequence "$SEQUENCE" --check
+
+echo "[3/3] Attempting protected port after knocking"
+nc -z -v -w 10 "$TARGET_IP" "$PROTECTED_PORT" || true
+
+echo "Waiting for knock sequence to expire..."
+sleep 15
+
+SEQUENCE=${2:-"1234,5678,9012,5676"}
+
+echo "Attempting incorrect knock sequence: $SEQUENCE"
+echo "[1/3] Attempting protected port before knocking"
+nc -z -v -w 10 "$TARGET_IP" "$PROTECTED_PORT" || true
+
+echo "[2/3] Sending knock sequence: $SEQUENCE"
+python3 knock_client.py --target "$TARGET_IP" --sequence "$SEQUENCE" --check
+
+echo "[3/3] Attempting protected port after knocking"
+nc -z -v -w 10 "$TARGET_IP" "$PROTECTED_PORT" || true
+
+echo "Waiting for knock sequence to expire..."
+sleep 15
+
+
+echo "Attempting correct knock sequence again: 1234,5678,9012 but with delay between knocks"
+SEQUENCE=${2:-"1234,5678,9012,5676"}
+echo "[1/3] Attempting protected port before knocking"
+nc -z -v -w 10 "$TARGET_IP" "$PROTECTED_PORT" || true
+
+echo "[2/3] Sending knock sequence: $SEQUENCE with delay between knocks"
+python3 knock_client.py --target "$TARGET_IP" --sequence "$SEQUENCE" --delay 7 --check
 
 echo "[3/3] Attempting protected port after knocking"
 nc -z -v -w 10 "$TARGET_IP" "$PROTECTED_PORT" || true
