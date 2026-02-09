@@ -11,6 +11,7 @@ from paramiko import RSAKey
 from paramiko.server import ServerInterface
 import threading
 
+
 HOST = "0.0.0.0"
 PORT = 22
 filesystem = {
@@ -26,13 +27,16 @@ host_key = RSAKey.generate(2048)
 LOG_PATH = "/app/logs/honeypot.log"
 
 
-def setup_logging():
-    os.makedirs("/app/logs", exist_ok=True)
-    logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s - %(levelname)s - %(message)s",
-        handlers=[logging.FileHandler(LOG_PATH), logging.StreamHandler()],
-    )
+# def setup_logging():
+#     os.makedirs("/app/logs", exist_ok=True)
+#     logging.basicConfig(
+#         level=logging.INFO,
+#         format="%(asctime)s - %(levelname)s - %(message)s",
+#         handlers=[logging.FileHandler(LOG_PATH), logging.StreamHandler()],
+#     )
+
+from logger import create_logger
+create_logger(LOG_PATH)
 
 COMMON_USERS = ["root", "ubuntu", "admin", "user", "test"]
 
@@ -45,18 +49,31 @@ COMMON_PASSWORDS = [
     "toor",
     "qwerty"
 ]
+FAILED_LOGINS = {}
 
 class Honeypot(paramiko.ServerInterface):
 
     def __init__(self):
         self.event = threading.Event()
+        self.username = None
+        self.client_ip = None
 
     # Called when client tries username/password
     def check_auth_password(self, username, password):
-        print(f"[LOGIN] {username}:{password}")
 
+        logging.info(
+    f"AUTH_ATTEMPT source_ip={self.client_ip} user={username} pass={password}"
+)
+
+        self.username = username
         if username in COMMON_USERS and password in COMMON_PASSWORDS:
             return paramiko.AUTH_SUCCESSFUL
+        
+        ip = self.client_ip
+        FAILED_LOGINS[ip] = FAILED_LOGINS.get(ip, 0) + 1
+
+        if FAILED_LOGINS[ip] >= 3:
+            logging.warning(f"ALERT multiple_failed_logins user={username}")
 
         time.sleep(0.5)
         return paramiko.AUTH_FAILED
@@ -77,18 +94,19 @@ def normalize(path):
         path = "/" + path
     return path.rstrip("/") if path != "/" else "/"
 
-def log(cmd):
-    with open(LOG_PATH, "a") as f:
-        f.write(f"{datetime.datetime.now()} :: {cmd}\n")
+def log(cmd, addr):
+    logging.info(f"COMMAND source_ip={addr[0]} cmd=\"{cmd}\"")
+
 
 
 def handle_client(client):
+    start = time.time()
 
     transport = paramiko.Transport(client)
     transport.add_server_key(host_key)
 
     server = Honeypot()
-
+    server.client_ip = client.getpeername()[0]
     transport.start_server(server=server)
 
     chan = transport.accept(20)
@@ -96,10 +114,10 @@ def handle_client(client):
     if chan is None:
         return
 
-    user = "ubuntu"
+    user = server.username or "ubuntu"
     cwd = "/home/ubuntu"
 
-    chan.send(b"Welcome to Ubuntu 20.04 LTS\r\n")
+    logging.info("BANNER_SENT Ubuntu 20.04")
     
     while True:
         chan.send(f"{user}@host:{cwd}$ ".encode())
@@ -108,7 +126,7 @@ def handle_client(client):
             break
 
         cmd = data.decode().strip()
-        log(cmd)
+        log(cmd, client.getpeername())
 
         if cmd == "exit":
             break
@@ -149,6 +167,8 @@ def handle_client(client):
 
         else:
             chan.send(b"command not found\r\n")
+    duration = time.time() - start
+    logging.info(f"SESSION_END duration={duration:.2f}s")
 
     chan.close()
     transport.close()
@@ -167,10 +187,10 @@ def run_honeypot():
 
     while True:
         client, addr = sock.accept()
-        print(f"[+] Connection from {addr}")
+        logging.info(f"NEW_CONNECTION source_ip={addr[0]} source_port={addr[1]}")
         handle_client(client)
 
 
 if __name__ == "__main__":
-    setup_logging()
+    # setup_logging()
     run_honeypot()
