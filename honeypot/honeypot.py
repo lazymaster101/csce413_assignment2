@@ -48,7 +48,7 @@ COMMON_PASSWORDS = [
 
 class Honeypot(paramiko.ServerInterface):
 
-    def init(self):
+    def __init__(self):
         self.event = threading.Event()
 
     # Called when client tries username/password
@@ -79,7 +79,7 @@ def normalize(path):
 
 def log(cmd):
     with open(LOG_PATH, "a") as f:
-        f.write(f"{datetime.now()} :: {cmd}\n")
+        f.write(f"{datetime.datetime.now()} :: {cmd}\n")
 
 
 def handle_client(client):
