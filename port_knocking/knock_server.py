@@ -6,11 +6,11 @@ import logging
 import socket
 import time
 import subprocess
-import sys # Added for flushing
+import sys 
 
 DEFAULT_KNOCK_SEQUENCE = [1111, 6767, 7676]
 DEFAULT_PROTECTED_PORT = 2222
-DEFAULT_SEQUENCE_WINDOW = 10.0
+DEFAULT_SEQUENCE_WINDOW = 30.0
 
 
 def setup_logging():
@@ -21,11 +21,12 @@ def setup_logging():
     )
 
 
+# I did not use these functions in the final implementation because I directly applied iptables rules in the listen_for_knocks function, but they are left here as placeholders for potential future refactoring.
 def open_protected_port(protected_port):
     """Open the protected port using firewall rules."""
     logging.info("TODO: Open firewall for port %s", protected_port)
 
-
+# I automatically close the protectted port after 10 seconds of a successful knock using the iptables rules, so this function is not used in the current implementation. It is left here as a placeholder for potential future refactoring.
 def close_protected_port(protected_port):
     """Close the protected port using firewall rules."""
     logging.info("TODO: Close firewall for port %s", protected_port)
@@ -72,7 +73,7 @@ def listen_for_knocks(sequence, window_seconds, protected_port):
      "-m","recent","--name","knock3","--set","-j","DROP"],
 
     ["iptables","-A","INPUT","-p","tcp","--dport","2222",
-     "-m","recent","--name","knock3","--rcheck","-j","ACCEPT"],
+     "-m","recent","--name","knock3","--rcheck","--seconds", "10", "-j","ACCEPT"],
     
     ["iptables", "-A", "INPUT", "-j", "DROP"]
     ]
