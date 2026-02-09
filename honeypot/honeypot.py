@@ -4,11 +4,12 @@
 import datetime
 import logging
 import os
-from socket import socket
+import socket
 import time
 import paramiko
 from paramiko import RSAKey
 from paramiko.server import ServerInterface
+import threading
 
 HOST = "0.0.0.0"
 PORT = 22
@@ -47,6 +48,9 @@ COMMON_PASSWORDS = [
 
 class Honeypot(paramiko.ServerInterface):
 
+    def init(self):
+        self.event = threading.Event()
+
     # Called when client tries username/password
     def check_auth_password(self, username, password):
         print(f"[LOGIN] {username}:{password}")
@@ -64,6 +68,7 @@ class Honeypot(paramiko.ServerInterface):
         return paramiko.OPEN_FAILED_ADMINISTRATIVELY_PROHIBITED
 
     def check_channel_shell_request(self, channel):
+        self.event.set()
         return True
 
 
