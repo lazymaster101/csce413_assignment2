@@ -6,6 +6,7 @@ COPY honeypot.py .
 
 # Create logs directory
 RUN mkdir -p /app/logs
+RUN pip install paramiko
 
 EXPOSE 22
 
