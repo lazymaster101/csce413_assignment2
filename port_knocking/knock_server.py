@@ -41,7 +41,7 @@ def listen_for_knocks(sequence, window_seconds, protected_port):
     logger.info("Listening for knocks: %s", sequence)
     logger.info("Protected port: %s", protected_port)
     
-    logger.info(f"DEBUG: Attempting to bind socket to 0.0.0.0:{protected_port}", flush=True)
+    logger.info(f"DEBUG: Attempting to bind socket to 0.0.0.0:{protected_port}")
     try:
         ourSocket = socket.socket()
         ourSocket.bind(("0.0.0.0", protected_port))
@@ -78,15 +78,15 @@ def listen_for_knocks(sequence, window_seconds, protected_port):
      "-m","recent","--name","knock1","--set","-j","DROP"],
     
     ["iptables","-A","INPUT","-p","tcp","--dport",str(port2),
-     "-m","recent","--name","knock1","--rcheck","--seconds",str(window_seconds),
+     "-m","recent","--name","knock1","--rcheck","--seconds",str(int(window_seconds)),
      "-m","recent","--name","knock2","--set","-j","DROP"],
 
     ["iptables","-A","INPUT","-p","tcp","--dport",str(port3),
-     "-m","recent","--name","knock2","--rcheck","--seconds",str(window_seconds),
+     "-m","recent","--name","knock2","--rcheck","--seconds",str(int(window_seconds)),
      "-m","recent","--name","knock3","--set","-j","DROP"],
 
     ["iptables","-A","INPUT","-p","tcp","--dport",str(protected_port),
-     "-m","recent","--name","knock3","--rcheck","--seconds",str(window_seconds), "-j","ACCEPT"],
+     "-m","recent","--name","knock3","--rcheck","--seconds",str(int(window_seconds)), "-j","ACCEPT"],
     
 # Remove from knock1
 ["iptables", "-A", "INPUT", "-p", "tcp", "-m", "multiport", "!", "--dports", str(port1)+","+str(port2)+","+str(port3)+","+str(protected_port), "-m", "recent", "--name", "knock1", "--remove"],
@@ -96,40 +96,44 @@ def listen_for_knocks(sequence, window_seconds, protected_port):
 
 ["iptables", "-A", "INPUT", "-p", "tcp", "-m", "multiport", "!", "--dports", str(port1)+","+str(port2)+","+str(port3)+","+str(protected_port), "-m", "recent", "--name", "knock3", "--remove"],
 
-# Drop the packet
-["iptables", "-A", "INPUT", "-p", "tcp", "-m", "multiport", "!", "--dports", str(port1)+","+str(port2)+","+str(port3)+","+str(protected_port), "-j", "DROP"]]
+# # Drop the packet
+# ["iptables", "-A", "INPUT", "-p", "tcp", "-m", "multiport", "!", "--dports", str(port1)+","+str(port2)+","+str(port3)+","+str(protected_port), "-j", "DROP"]
 
-    logger.info(f"DEBUG: Applying {len(rules)} iptables rules...", flush=True)
+["iptables", "-A", "INPUT", "-p", "tcp", "-j", "DROP"]
+
+]
+
+    logger.info(f"DEBUG: Applying {len(rules)} iptables rules...")
 
 
     # This loop runs these iptable commands inside the docker containter using the subprocess module. 
     for i, rule in enumerate(rules):
-        logger.info(f"DEBUG: Applying rule {i+1}: {' '.join(rule)}", flush=True)
+        logger.info(f"DEBUG: Applying rule {i+1}: {' '.join(rule)}")
         try:
             subprocess.run(rule, check=True)
         except subprocess.CalledProcessError as e:
              logger.warning(f"DEBUG: Failed to run rule {i+1}: {e}")
 
     # This prints the iptable rules inside the logging tab of the docker container in docker desktop for easier debugging
-    logger.info("DEBUG: [VERIFICATION] Listing current iptables rules to confirm port is locked:", flush=True)
+    logger.info("DEBUG: [VERIFICATION] Listing current iptables rules to confirm port is locked:")
     subprocess.run(["iptables", "-n", "-L", "INPUT"], check=False)
 
-    logger.info("DEBUG: Rules applied. Entering main loop...", flush=True)
+    logger.info("DEBUG: Rules applied. Entering main loop...")
 
     # Here we have a while true loop that will accept any connection coming to the port 2222
     # However, the iptable firewall rules we implemented will discard the packets coming for port 2222 at the IP layer. 
     # It won't even reach the application (python socket) layer unless the user performs port knocking and gets past the firewall rules.
      
     while True:
-        logger.info("DEBUG: Waiting for connection (accept)...", flush=True)
+        logger.info("DEBUG: Waiting for connection (accept)...")
         try:
             conn, addr = ourSocket.accept()
-            logger.info(f"DEBUG: [+] Connection accepted from: {addr}", flush=True)
+            logger.info(f"DEBUG: [+] Connection accepted from: {addr}")
             conn.sendall(b"You have successfully knocked!\n")
             conn.close()
-            logger.info("DEBUG: Connection closed.", flush=True)
+            logger.info("DEBUG: Connection closed.")
         except Exception as e:
-            logger.warning(f"DEBUG: Error in accept loop: {e}", flush=True)
+            logger.warning(f"DEBUG: Error in accept loop: {e}")
 
 
 def parse_args():
