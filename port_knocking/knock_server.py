@@ -8,9 +8,9 @@ import time
 import subprocess
 import sys 
 
-DEFAULT_KNOCK_SEQUENCE = [1111, 6767, 7676]
+DEFAULT_KNOCK_SEQUENCE = [1234, 5678, 9012]
 DEFAULT_PROTECTED_PORT = 2222
-DEFAULT_SEQUENCE_WINDOW = 30.0
+DEFAULT_SEQUENCE_WINDOW = 10.0
 
 
 def setup_logging():
@@ -21,12 +21,14 @@ def setup_logging():
     )
 
 
-# I did not use these functions in the final implementation because I directly applied iptables rules in the listen_for_knocks function, but they are left here as placeholders for potential future refactoring.
+# I did not use these functions in the final implementation because I directly applied iptables rules in the listen_for_knocks function, 
+# but they are left here as placeholders for potential future refactoring.
 def open_protected_port(protected_port):
     """Open the protected port using firewall rules."""
     logging.info("TODO: Open firewall for port %s", protected_port)
 
-# I automatically close the protectted port after 10 seconds of a successful knock using the iptables rules, so this function is not used in the current implementation. It is left here as a placeholder for potential future refactoring.
+# I automatically close the protectted port after 10 seconds of a successful knock using the iptables rules, so this function is not used in the current implementation. 
+# It is left here as a placeholder for potential future refactoring.
 def close_protected_port(protected_port):
     """Close the protected port using firewall rules."""
     logging.info("TODO: Close firewall for port %s", protected_port)
@@ -34,76 +36,100 @@ def close_protected_port(protected_port):
 
 def listen_for_knocks(sequence, window_seconds, protected_port):
     """Listen for knock sequence and open the protected port."""
-    print("DEBUG: Starting listen_for_knocks...", flush=True)
     
     logger = logging.getLogger("KnockServer")
     logger.info("Listening for knocks: %s", sequence)
     logger.info("Protected port: %s", protected_port)
     
-    print(f"DEBUG: Attempting to bind socket to 0.0.0.0:{protected_port}", flush=True)
+    logger.info(f"DEBUG: Attempting to bind socket to 0.0.0.0:{protected_port}", flush=True)
     try:
         ourSocket = socket.socket()
-        ourSocket.bind(("0.0.0.0", 2222))
+        ourSocket.bind(("0.0.0.0", protected_port))
         ourSocket.listen()
         
-        # --- NEW CONDITION CHECKING ---
         if ourSocket.fileno() != -1:
             bound_ip, bound_port = ourSocket.getsockname()
-            print(f"DEBUG: [SUCCESS] Socket is active (fd={ourSocket.fileno()}).", flush=True)
-            print(f"DEBUG: [SUCCESS] Socket is listening on {bound_ip}:{bound_port}", flush=True)
+            logger.info(f"DEBUG: [SUCCESS] Socket is active (fd={ourSocket.fileno()}).")
+            logger.info(f"DEBUG: [SUCCESS] Socket is listening on {bound_ip}:{bound_port}")
         else:
-            print("DEBUG: [FAILURE] Socket creation failed (invalid file descriptor).", flush=True)
+            logger.warning("DEBUG: [FAILURE] Socket creation failed (invalid file descriptor).")
             return
-        # -----------------------------
 
     except Exception as e:
-        print(f"DEBUG: Failed to bind socket: {e}", flush=True)
+        logger.error(f"DEBUG: Failed to bind socket: {e}", exc_info=True)
         return
 
+    port1 = sequence[0]
+    port2 = sequence[1]
+    port3 = sequence[2]
+
+    """
+    
+    Below are the rules I applied for the iptable firewall.
+    The first rule sets up the first knock port (port1) to add the source IP to a recent list named "knock1" and drop the packet.
+    The second rule checks for the second knock port (port2) and verifies that the source IP is in the "knock1" list within the last (window_seconds) seconds, then adds it to a new list "knock2" and drops the packet.
+    The third rule checks for the third knock port (port3) and verifies that the source IP is in the "knock2" list within the last (window_seconds) seconds, then adds it to a new list "knock3" and drops the packet.
+    The fourth rule checks for the protected port (protected_port) and verifies that the source IP is in the "knock3" list within the last (window_seconds) seconds, then accepts the connection.
+    The next three rules remove the source IP from all knock lists if it tries to access any port that is not part of the knock sequence or the protected port, effectively resetting the knocking process.
+    The final rule drops any packet that does not match the previous rules, ensuring that only properly knocked connections can access the protected port.    
+    """
     rules = [
-    ["iptables","-A","INPUT","-p","tcp","--dport","1111",
+    ["iptables","-A","INPUT","-p","tcp","--dport",str(port1),
      "-m","recent","--name","knock1","--set","-j","DROP"],
     
-    ["iptables","-A","INPUT","-p","tcp","--dport","6767",
-     "-m","recent","--name","knock1","--rcheck","--seconds","30",
+    ["iptables","-A","INPUT","-p","tcp","--dport",str(port2),
+     "-m","recent","--name","knock1","--rcheck","--seconds",str(window_seconds),
      "-m","recent","--name","knock2","--set","-j","DROP"],
 
-    ["iptables","-A","INPUT","-p","tcp","--dport","7676",
-     "-m","recent","--name","knock2","--rcheck","--seconds","30",
+    ["iptables","-A","INPUT","-p","tcp","--dport",str(port3),
+     "-m","recent","--name","knock2","--rcheck","--seconds",str(window_seconds),
      "-m","recent","--name","knock3","--set","-j","DROP"],
 
-    ["iptables","-A","INPUT","-p","tcp","--dport","2222",
-     "-m","recent","--name","knock3","--rcheck","--seconds", "10", "-j","ACCEPT"],
+    ["iptables","-A","INPUT","-p","tcp","--dport",str(protected_port),
+     "-m","recent","--name","knock3","--rcheck","--seconds",str(window_seconds), "-j","ACCEPT"],
     
-    ["iptables", "-A", "INPUT", "-j", "DROP"]
-    ]
+# Remove from knock1
+["iptables", "-A", "INPUT", "-p", "tcp", "-m", "multiport", "!", "--dports", str(port1)+","+str(port2)+","+str(port3)+","+str(protected_port), "-m", "recent", "--name", "knock1", "--remove"],
 
-    print(f"DEBUG: Applying {len(rules)} iptables rules...", flush=True)
+# Remove from knock2
+["iptables", "-A", "INPUT", "-p", "tcp", "-m", "multiport", "!", "--dports", str(port1)+","+str(port2)+","+str(port3)+","+str(protected_port), "-m", "recent", "--name", "knock2", "--remove"],
 
+["iptables", "-A", "INPUT", "-p", "tcp", "-m", "multiport", "!", "--dports", str(port1)+","+str(port2)+","+str(port3)+","+str(protected_port), "-m", "recent", "--name", "knock3", "--remove"],
+
+# Drop the packet
+["iptables", "-A", "INPUT", "-p", "tcp", "-m", "multiport", "!", "--dports", str(port1)+","+str(port2)+","+str(port3)+","+str(protected_port), "-j", "DROP"]]
+
+    logger.info(f"DEBUG: Applying {len(rules)} iptables rules...", flush=True)
+
+
+    # This loop runs these iptable commands inside the docker containter using the subprocess module. 
     for i, rule in enumerate(rules):
-        print(f"DEBUG: Applying rule {i+1}: {' '.join(rule)}", flush=True)
+        logger.info(f"DEBUG: Applying rule {i+1}: {' '.join(rule)}", flush=True)
         try:
             subprocess.run(rule, check=True)
         except subprocess.CalledProcessError as e:
-             print(f"DEBUG: Failed to run rule {i+1}: {e}", flush=True)
+             logger.warning(f"DEBUG: Failed to run rule {i+1}: {e}")
 
-    # --- NEW FIREWALL CHECK ---
-    print("DEBUG: [VERIFICATION] Listing current iptables rules to confirm port is locked:", flush=True)
+    # This prints the iptable rules inside the logging tab of the docker container in docker desktop for easier debugging
+    logger.info("DEBUG: [VERIFICATION] Listing current iptables rules to confirm port is locked:", flush=True)
     subprocess.run(["iptables", "-n", "-L", "INPUT"], check=False)
-    # --------------------------
 
-    print("DEBUG: Rules applied. Entering main loop...", flush=True)
+    logger.info("DEBUG: Rules applied. Entering main loop...", flush=True)
 
+    # Here we have a while true loop that will accept any connection coming to the port 2222
+    # However, the iptable firewall rules we implemented will discard the packets coming for port 2222 at the IP layer. 
+    # It won't even reach the application (python socket) layer unless the user performs port knocking and gets past the firewall rules.
+     
     while True:
-        print("DEBUG: Waiting for connection (accept)...", flush=True)
+        logger.info("DEBUG: Waiting for connection (accept)...", flush=True)
         try:
             conn, addr = ourSocket.accept()
-            print(f"DEBUG: [+] Connection accepted from: {addr}", flush=True)
+            logger.info(f"DEBUG: [+] Connection accepted from: {addr}", flush=True)
             conn.sendall(b"You have successfully knocked!\n")
             conn.close()
-            print("DEBUG: Connection closed.", flush=True)
+            logger.info("DEBUG: Connection closed.", flush=True)
         except Exception as e:
-            print(f"DEBUG: Error in accept loop: {e}", flush=True)
+            logger.warning(f"DEBUG: Error in accept loop: {e}", flush=True)
 
 
 def parse_args():
