@@ -708,3 +708,5 @@
 2026-02-09 15:32:42,844 - ERROR -     raise SSHException(
 2026-02-09 15:32:42,844 - ERROR - paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
 2026-02-09 15:32:42,844 - ERROR - 
+2026-02-09 22:46:53,471 - INFO - Honeypot starter template running.
+2026-02-09 22:46:53,472 - INFO - TODO: Implement protocol simulation, logging, and alerting.
