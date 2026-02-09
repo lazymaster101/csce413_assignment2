@@ -53,14 +53,14 @@ def scan_port(target, port, timeout=3.0, results=None):
         """
         Some services like HTTP and SSH will send a banner immediately after connection. You can read this banner to identify the service and version.
         For example, an SSH server might send something like "SSH-2.0-OpenSSH_7.9p1 Debian-10+deb10u2" which indicates it's running OpenSSH version 7.9p1 on Debian 10.
-        In our case we will just read the banner if available and include it in the results. If no banner is sent, we can note that as well.
+        Seems like in our case we are not able to discover any ports without sending any information. So we will send some garbage information and try to recieve the banner.
         """
         
-        # Uncomment the following lines to send a simple request and read the banner (if applicable)
+        
         # newSocket.send(b'GET / HTTP/1.1\r\n\r\n')
-        # sent = newSocket.send(b'\r\n')
+        sent = newSocket.send(b'\r\n')
         # print("Message sent successfully", sent)
-        # time.sleep(0.5)
+        time.sleep(0.5)
         
         # We will only receive and read the banner that way
         banner = newSocket.recv(1024)
