@@ -732,3 +732,27 @@
 2026-02-09 23:00:46,722 - ERROR -     raise SSHException(
 2026-02-09 23:00:46,722 - ERROR - paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
 2026-02-09 23:00:46,722 - ERROR - 
+2026-02-09 23:24:53,103 - INFO - Honeypot starter template running.
+2026-02-09 23:24:53,104 - INFO - TODO: Implement protocol simulation, logging, and alerting.
+2026-02-09 23:25:07,150 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=50114
+2026-02-09 23:25:07,666 - ERROR - Exception (server): Error reading SSH protocol banner
+2026-02-09 23:25:07,670 - ERROR - Traceback (most recent call last):
+2026-02-09 23:25:07,671 - ERROR -   File "/usr/local/lib/python3.11/site-packages/paramiko/transport.py", line 2363, in _check_banner
+2026-02-09 23:25:07,671 - ERROR -     buf = self.packetizer.readline(timeout)
+2026-02-09 23:25:07,671 - ERROR -           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-09 23:25:07,671 - ERROR -   File "/usr/local/lib/python3.11/site-packages/paramiko/packet.py", line 395, in readline
+2026-02-09 23:25:07,671 - ERROR -     buf += self._read_timeout(timeout)
+2026-02-09 23:25:07,671 - ERROR -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-09 23:25:07,671 - ERROR -   File "/usr/local/lib/python3.11/site-packages/paramiko/packet.py", line 665, in _read_timeout
+2026-02-09 23:25:07,671 - ERROR -     raise EOFError()
+2026-02-09 23:25:07,671 - ERROR - EOFError
+2026-02-09 23:25:07,671 - ERROR - 
+2026-02-09 23:25:07,671 - ERROR - During handling of the above exception, another exception occurred:
+2026-02-09 23:25:07,671 - ERROR - 
+2026-02-09 23:25:07,671 - ERROR - Traceback (most recent call last):
+2026-02-09 23:25:07,671 - ERROR -   File "/usr/local/lib/python3.11/site-packages/paramiko/transport.py", line 2179, in run
+2026-02-09 23:25:07,671 - ERROR -     self._check_banner()
+2026-02-09 23:25:07,671 - ERROR -   File "/usr/local/lib/python3.11/site-packages/paramiko/transport.py", line 2367, in _check_banner
+2026-02-09 23:25:07,671 - ERROR -     raise SSHException(
+2026-02-09 23:25:07,671 - ERROR - paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
+2026-02-09 23:25:07,671 - ERROR - 
