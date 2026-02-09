@@ -118,57 +118,62 @@ def handle_client(client):
     cwd = "/home/ubuntu"
 
     logging.info("BANNER_SENT Ubuntu 20.04")
-    
-    while True:
-        chan.send(f"{user}@host:{cwd}$ ".encode())
-        data = chan.recv(1024)
-        if not data:
-            break
+    try:
+        while True:
+            chan.send(f"{user}@host:{cwd}$ ".encode())
+            data = chan.recv(1024)
+            if not data:
+                break
 
-        cmd = data.decode().strip()
-        log(cmd, client.getpeername())
+            cmd = data.decode().strip()
+            log(cmd, client.getpeername())
 
-        if cmd == "exit":
-            break
+            if cmd == "exit":
+                break
 
-        elif cmd == "pwd":
-            chan.send((cwd + "\r\n").encode())
+            elif cmd == "pwd":
+                chan.send((cwd + "\r\n").encode())
 
-        elif cmd == "whoami":
-            chan.send(b"root\r\n")
+            elif cmd == "whoami":
+                chan.send(b"root\r\n")
 
-        elif cmd == "uname -a":
-            chan.send(b"Linux host 5.15.0-86-generic #96-Ubuntu SMP x86_64 GNU/Linux\r\n")
+            elif cmd == "uname -a":
+                chan.send(b"Linux host 5.15.0-86-generic #96-Ubuntu SMP x86_64 GNU/Linux\r\n")
 
-        elif cmd.startswith("ls"):
-            path = cwd
-            parts = cmd.split()
+            elif cmd.startswith("ls"):
+                path = cwd
+                parts = cmd.split()
 
-            if len(parts) > 1:
-                path = normalize(parts[1])
+                if len(parts) > 1:
+                    path = normalize(parts[1])
 
-            if path in filesystem:
-                chan.send(("  ".join(filesystem[path]) + "\r\n").encode())
-            else:
-                chan.send(b"No such file or directory\r\n")
-
-        elif cmd.startswith("cd"):
-            parts = cmd.split()
-
-            if len(parts) == 1:
-                cwd = "/home/ubuntu"
-            else:
-                new = normalize(parts[1])
-
-                if new in filesystem:
-                    cwd = new
+                if path in filesystem:
+                    chan.send(("  ".join(filesystem[path]) + "\r\n").encode())
                 else:
-                    chan.send(b"No such directory\r\n")
+                    chan.send(b"No such file or directory\r\n")
 
-        else:
-            chan.send(b"command not found\r\n")
-    duration = time.time() - start
-    logging.info(f"SESSION_END duration={duration:.2f}s")
+            elif cmd.startswith("cd"):
+                parts = cmd.split()
+
+                if len(parts) == 1:
+                    cwd = "/home/ubuntu"
+                else:
+                    new = normalize(parts[1])
+
+                    if new in filesystem:
+                        cwd = new
+                    else:
+                        chan.send(b"No such directory\r\n")
+
+            else:
+                chan.send(b"command not found\r\n")
+    except EOFError:
+        logging.info("CLIENT_DISCONNECTED")
+    except Exception as e:
+        logging.error(f"ERROR {str(e)}")
+    finally:
+        duration = time.time() - start
+        logging.info(f"SESSION_END duration={duration:.2f}s")
 
     chan.close()
     transport.close()

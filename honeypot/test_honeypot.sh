@@ -2,7 +2,7 @@
 # SSH Honeypot Attack Simulation Script
 # Designed for CS honeypot assignment testing
 
-TARGET="172.20.0.40"
+TARGET="172.20.0.30"
 
 USERS=("root" "admin" "ubuntu" "test" "nobody")
 PASSWORDS=("password" "123456" "admin" "root" "letmein" "wrongpass")
@@ -23,6 +23,7 @@ for user in "${USERS[@]}"; do
   for pass in "${PASSWORDS[@]}"; do
     echo "[+] Trying $user:$pass"
     sshpass -p "$pass" ssh \
+      -T \
       -o StrictHostKeyChecking=no \
       -o UserKnownHostsFile=/dev/null \
       -o ConnectTimeout=5 \
@@ -55,9 +56,14 @@ COMMANDS=(
 for cmd in "${COMMANDS[@]}"; do
   echo "[+] Executing: $cmd"
   sshpass -p "password" ssh \
+    -T \
     -o StrictHostKeyChecking=no \
     -o UserKnownHostsFile=/dev/null \
-    admin@$TARGET "$cmd" 2>/dev/null
+    admin@$TARGET <<EOF 
+    $cmd
+    exit
+EOF
+  2>/dev/null
   sleep 1
 done
 
@@ -83,9 +89,14 @@ INJECTION_CMDS=(
 for cmd in "${INJECTION_CMDS[@]}"; do
   echo "[+] Injecting: $cmd"
   sshpass -p "password" ssh \
+  -T \
     -o StrictHostKeyChecking=no \
     -o UserKnownHostsFile=/dev/null \
-    admin@$TARGET "$cmd" 2>/dev/null
+    admin@$TARGET <<EOF 
+    $cmd
+    exit
+EOF
+    2>/dev/null
   sleep 1
 done
 
@@ -93,20 +104,6 @@ echo ""
 echo "[✓] Injection attempts complete"
 echo ""
 
-# ---------------------------------------
-# Test 4: Rapid Connections (Scan Simulation)
-# ---------------------------------------
-echo "[*] Test 4: Rapid Connection Attempts"
-echo "---------------------------------------"
-
-for i in {1..5}; do
-  echo "[+] Rapid connection $i"
-  sshpass -p "scan" ssh \
-    -o StrictHostKeyChecking=no \
-    -o UserKnownHostsFile=/dev/null \
-    -o ConnectTimeout=2 \
-    scanner@$TARGET exit 2>/dev/null &
-done
 
 wait
 
