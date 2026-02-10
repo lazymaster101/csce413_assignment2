@@ -756,3 +756,35 @@
 2026-02-09 23:25:07,671 - ERROR -     raise SSHException(
 2026-02-09 23:25:07,671 - ERROR - paramiko.ssh_exception.SSHException: Error reading SSH protocol banner
 2026-02-09 23:25:07,671 - ERROR - 
+2026-02-10 00:16:42,755 - INFO - Honeypot starter template running.
+2026-02-10 00:16:42,755 - INFO - TODO: Implement protocol simulation, logging, and alerting.
+2026-02-10 00:19:41,226 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=52380
+2026-02-10 00:19:41,229 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-10 00:19:43,296 - INFO - Auth rejected (none).
+2026-02-10 00:19:50,788 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=user pass=admin
+2026-02-10 00:19:50,788 - INFO - Auth granted (password).
+2026-02-10 00:19:50,790 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-10 00:22:36,425 - INFO - Disconnect (code 11): disconnected by user
+2026-02-10 00:22:36,466 - INFO - SESSION_END duration=175.24s
+2026-02-10 00:22:47,466 - INFO - Honeypot starter template running.
+2026-02-10 00:22:47,467 - INFO - TODO: Implement protocol simulation, logging, and alerting.
+2026-02-10 00:23:53,104 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=48284
+2026-02-10 00:23:53,109 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-10 00:26:47,293 - INFO - Honeypot starter template running.
+2026-02-10 00:26:47,304 - INFO - TODO: Implement protocol simulation, logging, and alerting.
+2026-02-10 00:31:45,884 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=49626
+2026-02-10 00:31:45,896 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-10 00:32:05,452 - INFO - Auth rejected (none).
+2026-02-10 00:32:27,115 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=admin pass=root
+2026-02-10 00:32:27,116 - INFO - Auth granted (password).
+2026-02-10 00:33:13,351 - INFO - Disconnect (code 11): disconnected by user
+2026-02-10 00:35:14,260 - INFO - NEW_CONNECTION source_ip=172.20.0.10 source_port=40862
+2026-02-10 00:35:14,261 - INFO - Connected (version 2.0, client OpenSSH_10.0p2)
+2026-02-10 00:35:14,269 - INFO - Auth rejected (none).
+2026-02-10 00:35:14,272 - INFO - AUTH_ATTEMPT source_ip=172.20.0.10 user=admin pass=root
+2026-02-10 00:35:14,272 - INFO - Auth granted (password).
+2026-02-10 00:35:14,275 - INFO - BANNER_SENT Ubuntu 20.04
+2026-02-10 00:35:16,602 - INFO - COMMAND source_ip=172.20.0.10 cmd="ls"
+2026-02-10 01:16:35,651 - INFO - COMMAND source_ip=172.20.0.10 cmd="pwd"
+2026-02-10 01:16:41,947 - INFO - COMMAND source_ip=172.20.0.10 cmd="cd /home"
+2026-02-10 01:16:42,590 - INFO - COMMAND source_ip=172.20.0.10 cmd="ls"
