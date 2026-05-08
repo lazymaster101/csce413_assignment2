@@ -2,7 +2,7 @@
 
 ![Network Security Lab preview](assets/github-preview.png)
 
-A Docker-based network security lab for practicing service discovery, traffic analysis, exploitation chaining, and defensive controls. This repository contains my implementation for CSCE 413 Assignment 2, reshaped here as a portfolio project to show practical security engineering work across Python tooling, Docker networking, packet analysis, firewall rules, and honeypot logging.
+A Docker-based network security lab for practicing service discovery, traffic analysis, exploitation chaining, and defensive controls. This repository contains my implementation for CSCE 713 Assignment 2, reshaped here as a portfolio project to show practical security engineering work across Python tooling, Docker networking, packet analysis, firewall rules, and honeypot logging.
 
 The original course prompt has been preserved in [ASSIGNMENT_INSTRUCTIONS.md](ASSIGNMENT_INSTRUCTIONS.md).
 
