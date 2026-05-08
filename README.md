@@ -57,14 +57,15 @@ The repository has focused sub-READMEs for each major part of the work:
 - [Port knocking implementation](port_knocking/README.md)
 - [Honeypot implementation notes](honeypot/README.md)
 - [Honeypot attack analysis](honeypot/analysis.md)
+- [Full Google Doc Report](https://docs.google.com/document/d/13xKqezeqweWQzn8FLrLtXYjSz5PUIGo9Fq0RHKBjZjc/edit?usp=sharing)
 
 ## Running Locally
 
 This project is intentionally vulnerable. Run it only in an isolated local Docker environment.
 
 ```bash
-git clone https://github.com/lazymaster101/csce413_assignment2.git
-cd csce413_assignment2
+git clone https://github.com/lazymaster101/Network-Security-Lab.git
+cd Network-Security-Lab
 docker compose up --build
 ```
 
@@ -85,10 +86,6 @@ To stop the environment and remove persistent database data:
 ```bash
 docker compose down -v
 ```
-
-## Repository Preview Image
-
-The GitHub preview asset is stored at [assets/github-preview.png](assets/github-preview.png). It can be used in the README or uploaded as the repository social preview image in GitHub settings.
 
 ## Security Notice
 
