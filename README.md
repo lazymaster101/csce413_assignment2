@@ -8,7 +8,7 @@ The original course prompt has been preserved in [ASSIGNMENT_INSTRUCTIONS.md](AS
 
 ## Demo
 
-Watch the walkthrough video here: [Google Drive demo](https://drive.google.com/file/d/1DmXUXajfRqO0daoT1ZMrLp1voedzim6Q/view?usp=sharing)
+Watch the walkthrough video here: [Google Drive demo](https://drive.google.com/file/d/17fDDtzu3ZT0wmROTJWZBnrpipN4R_jGb/view?usp=sharing)
 
 ## What This Project Demonstrates
 
